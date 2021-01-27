@@ -44,11 +44,18 @@ namespace WeilerGewinnRechner
             double restGewinn = this.Gesellschaft.Gewinn - 
                 (this.Gesellschaft.GesamtKapital * this.Gesellschaft.GewinnVerzinsung);
 
-            this.Gesellschaft.Gesellschafter.ForEach(gesellschafter =>
+            for (int i = 0; i < this.GesellschafterAnzahl; i++)
             {
+                Gesellschafter gesellschafter = this.Gesellschaft.Gesellschafter[i];
+
+                double anteilProzent = gesellschafter.Kapital * this.Gesellschaft.GewinnVerzinsung;
+
                 double gewinn = (restGewinn / this.Gesellschaft.MaxAnteile) * gesellschafter.Anteile;
-                calcResults.Add(new CalcResult(gesellschafter, gewinn, false));
-            });
+                calcResults.Add(new CalcResult(gesellschafter,
+                    gewinn,
+                    false,
+                    $"Gesamt Gewinn: {gewinn + anteilProzent}"));
+            }
 
             return calcResults;
         }
