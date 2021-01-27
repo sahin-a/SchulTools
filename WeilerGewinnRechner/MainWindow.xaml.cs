@@ -25,6 +25,8 @@ namespace WeilerGewinnRechner
     {
         public MainWindow()
         {
+            //Resources.Add("showAnteileBox", Visibility.Hidden);
+
             InitializeComponent();
 
             this.gesellschafterListBox.Items.Add(new Gesellschafter(0));
@@ -84,6 +86,19 @@ namespace WeilerGewinnRechner
         private void gewinnTBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             gewinnTBox.Text = regex.IsMatch(gewinnTBox.Text) ? gewinnTBox.Text : "0";
+        }
+
+        private void gesellschaftsFormenComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            /*switch (this.gesellschaftsFormenComboBox.SelectedItem)
+            {
+                case GesellschaftsForm.KG:
+                    Resources["showAnteileBox"] = Visibility.Visible;
+                    break;
+                default:
+                    Resources["showAnteileBox"] = Visibility.Hidden;
+                    break;
+            }*/
         }
     }
 }

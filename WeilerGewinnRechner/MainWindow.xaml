@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Rechner" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="gesellschaftsFormenComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="24"/>
+        <ComboBox x:Name="gesellschaftsFormenComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="24" SelectionChanged="gesellschaftsFormenComboBox_SelectionChanged"/>
         <ListBox x:Name="gesellschafterListBox" Margin="10,41,510,190">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -29,7 +29,7 @@
 
                             <TextBox Text="{Binding Kapital}" Margin="5" Padding="5" Grid.Column="0" Width="100" />
                             <TextBox Text="{Binding Anteile}" Margin="5" Padding="5" Grid.Column="1" Width="30" />
-                            <CheckBox IsChecked="{Binding IsSelected}" Margin="5" Padding="5" Grid.Column="2" />
+                            <!-- <CheckBox Visibility="{StaticResource showAnteileBox}" IsChecked="{Binding IsSelected}" Margin="5" Padding="5" Grid.Column="2" /> -->
                         </Grid>
                     </Grid>
                 </DataTemplate>
