@@ -27,7 +27,7 @@ namespace WeilerGewinnRechner
             switch (Gesellschaft.GesellschaftsForm)
             {
                 case GesellschaftsForm.KG:
-                    return isVerlust ? VerlustOHG() : GewinnOHG();
+                    return isVerlust ? VerlustKG() : GewinnKG();
                 case GesellschaftsForm.GMBH:
                     return isVerlust ? VerlustGMBH() : GewinnGMBH();
                 case GesellschaftsForm.OHG:
@@ -37,11 +37,33 @@ namespace WeilerGewinnRechner
             return null;
         }
 
+        private List<CalcResult> GewinnKG()
+        {
+            List<CalcResult> calcResults = new List<CalcResult>();
+
+            double restGewinn = this.Gesellschaft.Gewinn - 
+                (this.Gesellschaft.GesamtKapital * this.Gesellschaft.GewinnVerzinsung);
+
+            this.Gesellschaft.Gesellschafter.ForEach(gesellschafter =>
+            {
+                double gewinn = (restGewinn / this.Gesellschaft.MaxAnteile) * gesellschafter.Anteile;
+                calcResults.Add(new CalcResult(gesellschafter, gewinn, false));
+            });
+
+            return calcResults;
+        }
+
+        private List<CalcResult> VerlustKG()
+        {
+            List<CalcResult> calcResults = new List<CalcResult>();
+
+            return calcResults;
+        }
+
         private List<CalcResult> GewinnGMBH()
         {
             List<CalcResult> calcResults = new List<CalcResult>();
 
-            List<double> prozente = new List<double>();
             this.Gesellschaft.Gesellschafter.ForEach(gesellschaft =>
             {
                 double prozentAnteil = gesellschaft.Kapital / this.Gesellschaft.GesamtKapital;
@@ -56,6 +78,9 @@ namespace WeilerGewinnRechner
         private List<CalcResult> VerlustGMBH()
         {
             List<CalcResult> calcResults = new List<CalcResult>();
+            double verlust = this.Gesellschaft.GesamtKapital - this.Gesellschaft.Gewinn;
+
+            calcResults.Add(new CalcResult(null, verlust, true, "NEUES GESAMTKAPITAL"));
 
             return calcResults;
         }

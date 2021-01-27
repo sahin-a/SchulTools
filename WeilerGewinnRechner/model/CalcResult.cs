@@ -12,11 +12,14 @@ namespace WeilerGewinnRechner.model
 
         public bool IsVerlust { get; set; }
 
-        public CalcResult(Gesellschafter gesellschafter, double gewinn, bool isVerlust)
+        public string Note { get; set; }
+
+        public CalcResult(Gesellschafter gesellschafter, double gewinn, bool isVerlust, string note = "")
         {
             this.Gesellschafter = gesellschafter;
             this.Gewinn = gewinn;
             this.IsVerlust = isVerlust;
+            this.Note = note;
         }
     }
 }

@@ -9,6 +9,8 @@ namespace WeilerGewinnRechner.model
     {
         public bool IsSelected { get; set; }
 
+        public int Anteile { get; set; }
+
         private int kapital;
         public int Kapital { get
             {
@@ -20,9 +22,10 @@ namespace WeilerGewinnRechner.model
             }
         }
 
-        public Gesellschafter(int kapital)
+        public Gesellschafter(int kapital, int anteile = 0)
         {
             this.Kapital = kapital;
+            this.Anteile = anteile;
         }
     }
 }

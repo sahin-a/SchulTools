@@ -28,12 +28,14 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBox Text="{Binding Kapital}" Margin="5" Padding="5" Grid.Column="0" Width="100" />
-                            <CheckBox IsChecked="{Binding IsSelected}" Margin="5" Padding="5" Grid.Column="1" />
+                            <TextBox Text="{Binding Anteile}" Margin="5" Padding="5" Grid.Column="1" Width="30" />
+                            <CheckBox IsChecked="{Binding IsSelected}" Margin="5" Padding="5" Grid.Column="2" />
                         </Grid>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        
         <Button x:Name="addBtn" Content="Add" HorizontalAlignment="Left" Margin="295,41,0,0" VerticalAlignment="Top" Click="addBtn_Click"/>
         <Button x:Name="removeBtn" Content="Remove" HorizontalAlignment="Left" Margin="295,66,0,0" VerticalAlignment="Top" Click="removeBtn_Click"/>
         <TextBox x:Name="gewinnTBox" Text="10" HorizontalAlignment="Left" Margin="60,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" TextChanged="gewinnTBox_TextChanged"/>
@@ -43,6 +45,7 @@
         <TextBox x:Name="zinsenTBox" Text="0,04" HorizontalAlignment="Left" Margin="165,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" TextChanged="zinsenTBox_TextChanged"/>
         <Label Content="Gewinn" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top"/>
         <Label Content="Zinsen (4% = 0,04 KOMMA)" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top"/>
+        
         <ListView x:Name="resultListBox" Margin="354,10,10,190">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -61,12 +64,14 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <Label Content="{Binding Gewinn}" Margin="5" Padding="5" Grid.Column="0" />
                             <Label Content="{Binding Gesellschafter.IsSelected}" Margin="5" Padding="5" Grid.Column="1" />
                             <Label Content="{Binding Gesellschafter.Kapital}" Margin="5" Padding="5" Grid.Column="2" />
                             <Label Content="{Binding IsVerlust}" Margin="5" Padding="5" Grid.Column="3" />
+                            <Label Content="{Binding Note}" Margin="5" Padding="5" Grid.Column="4" />
                         </Grid>
                     </Grid>
                 </DataTemplate>

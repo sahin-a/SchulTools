@@ -17,6 +17,8 @@ namespace WeilerGewinnRechner.model
 
         public double GesamtKapital { get; set; }
 
+        public int MaxAnteile { get; set; }
+
         public bool IsVerlust { get; set; }
 
         public Gesellschaft(GesellschaftsForm gesellschaftsForm, List<Gesellschafter> gesellschafter, double gewinn, double verzinsung, bool isVerlust)
@@ -27,7 +29,11 @@ namespace WeilerGewinnRechner.model
             this.GewinnVerzinsung = verzinsung;
             this.IsVerlust = isVerlust;
 
-            gesellschafter.ForEach(gesellschafter => this.GesamtKapital += gesellschafter.Kapital);
+            gesellschafter.ForEach(gesellschafter =>
+            {
+                this.GesamtKapital += gesellschafter.Kapital;
+                this.MaxAnteile += gesellschafter.Anteile;
+            });
         }
     }
 }
