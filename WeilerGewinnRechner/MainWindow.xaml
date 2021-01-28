@@ -29,7 +29,7 @@
 
                             <TextBox Text="{Binding Kapital}" Margin="5" Padding="5" Grid.Column="0" Width="100" />
                             <TextBox Text="{Binding Anteile}" Margin="5" Padding="5" Grid.Column="1" Width="30" />
-                            <!-- <CheckBox Visibility="{StaticResource showAnteileBox}" IsChecked="{Binding IsSelected}" Margin="5" Padding="5" Grid.Column="2" /> -->
+                            <CheckBox IsChecked="{Binding IsSelected}" Margin="5" Padding="5" Grid.Column="2" />
                         </Grid>
                     </Grid>
                 </DataTemplate>
